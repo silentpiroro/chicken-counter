@@ -1,17 +1,89 @@
-<html>
-    <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
-        <link rel="stylesheet" href="index.css">
-    </head>
-    <body>
-        <h1>Chickens Counted:</h1>
-        <h2 id="count-el">0</h2>
-        <button id="increment-btn" onclick="increment()">ADD (+)</button>
-        <button id="save-btn" onclick="save()">SAVE</button>
-       
-        <p id="save-el">Previous entries: </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Description Generator</title>
+    <script src="https://cdn.jsdelivr.net/npm/txtgen@2.5.0/dist/txtgen.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
         
-        <script src="index.js">
-            nnerText
-        </script>
-    </body>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        form {
+            text-align: center;
+        }
+        
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        input {
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        
+        button {
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        #generatedDescription {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Product Description Generator</h1>
+        <form id="productForm">
+            <label for="productName">Product Name:</label>
+            <input type="text" id="productName" name="productName" required><br><br>
+            <label for="keywords">Keywords (comma-separated):</label>
+            <input type="text" id="keywords" name="keywords" required><br><br>
+            <button type="button" id="generateButton">Generate Product Description</button>
+        </form>
+        <div id="descriptionResult">
+            <p id="generatedDescription"></p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const generator = new window.txtgen();
+        
+            const generateButton = document.getElementById("generateButton");
+            generateButton.addEventListener("click", function() {
+                const productName = document.getElementById("productName").value;
+                const keywords = document.getElementById("keywords").value.split(",").map(keyword => keyword.trim());
+        
+                const descriptionTemplate = `Introducing our new ${productName} that will ${generator.sentence()}. With ${generator.sentence()}, this ${productName} is perfect for ${keywords.join(", ")}.`;
+        
+                const descriptionElement = document.getElementById("generatedDescription");
+                descriptionElement.textContent = descriptionTemplate;
+            });
+        });
+    </script>
+</body>
 </html>
