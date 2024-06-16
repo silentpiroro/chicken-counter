@@ -1,1 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #b5ed3d;
+    color: #333;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    color: #D4AF37;
+}
+
+section {
+    padding: 20px;
+    margin: 0 15px;
+    background: white;
+    border-bottom: 2px solid #b5ed3d;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 20px;
+    background: #333;
+    color: white;
+}
+
+#countdownTimer {
+    font-size: 1.5em;
+    font-weight: bold;
+}
 
